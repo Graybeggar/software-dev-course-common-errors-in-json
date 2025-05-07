@@ -68,20 +68,31 @@ const invalidBookingJSON = `
   }
 }
 `;
-
-
 // ============================================
-// ✅ Requirements
+// ✅ Corrected Version
 // ============================================
-
-/*
-- Use a JSON validator or linter (e.g., https://jsonlint.com/) to test your final version
-- Keep track of each fix:
-  • What was wrong?
-  • Why is it a problem in JSON?
-  • What did you change to fix it?
-*/
-
+{
+    "hotelName": "Grand City Hotel",
+    "checkInDate": "2024-05-15", // missing comma. JSON requires commas between key-value pairs.
+    "checkOutDate": "2024-05-20",
+    "guests": [
+      {
+        "name": "Alice Johnson", // unquoted key "name". JSON keys must be strings in double quotes.
+        "age": 30,
+        "email": "alice.johnson@example.com"
+      },
+      {
+        "name": "Bob Smith",
+        "age": null, // invaled value "undefined". Only null.
+        "email": "bob.smith@example"
+      }
+    ],
+    "roomDetails": {
+      "type": "Suite",
+      "pricePerNight": 200,
+      "amenities": ["WiFi", "Breakfast", "Parking"] // trailing coma after "parking". Trailing commas are not allowed in JSON arrays or objects.
+    }
+  }
 
 // ============================================
 // 🤔 Follow-Up Questions
@@ -91,11 +102,12 @@ const invalidBookingJSON = `
 💬 Reflect and answer the following:
 
 1️⃣ What tools or techniques did you use to identify the errors?
-
+        I used https://jsonlint.com/
 2️⃣ How did you confirm that your corrected JSON file was valid?
-
+        Using https://jsonlint.com/ to validate my corrected code.
 3️⃣ Which errors were the most difficult to spot? Why?
-
-4️⃣ What strategies can help you avoid these kinds of errors in the future?
+        Commas were the hardest to spot. They are so small that sometimes it's easy to miss.
+4️⃣ What strategies can help you avoid these errors in the future?
    (e.g., syntax highlighting, linters, writing JSON by example)
+        Using linters helps correct human errors.
 */
